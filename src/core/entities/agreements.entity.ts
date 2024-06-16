@@ -3,16 +3,17 @@ import { Repayments } from './repayments.entity';
 import { Student } from './student.entity';
 import { Group } from './group.entity';
 
+
 @Entity('agreements')
 export class Agreements {
   @PrimaryColumn({ type: 'bigint' })
   id: string;
 
   @Column()
-  start_date: string
+  start_date: Date
 
   @Column()
-  end_date: string
+  end_date: Date
 
   @Column()
   price: number

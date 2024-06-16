@@ -1,6 +1,4 @@
-import { ManyToOne, Entity, PrimaryColumn, OneToMany } from 'typeorm';
-import { Material } from './material.entity';
-import { Tests } from './tests.entity';
+import { ManyToOne, Entity, PrimaryColumn, OneToMany, Column } from 'typeorm';
 import { Student } from './student.entity';
 import { Course } from './course.entity';
 import { Agreements } from './agreements.entity';
@@ -10,6 +8,9 @@ import { Teacher } from './teacher.entity';
 export class Group {
   @PrimaryColumn({ type: 'bigint' })
   id: string;
+
+  @Column()
+  number: number;
 
   @OneToMany(() => Student, (students) => students.group)
   students: Student[];

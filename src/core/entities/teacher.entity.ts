@@ -1,4 +1,4 @@
-import { OneToMany, Entity, PrimaryColumn, ManyToOne } from 'typeorm';
+import { OneToMany, Entity, PrimaryColumn, Column } from 'typeorm';
 import { Course } from './course.entity';
 import { Group } from './group.entity';
 import { Attendance } from './attendance.entity';
@@ -8,6 +8,36 @@ import { WorkingOff } from './working_off.entity';
 export class Teacher {
   @PrimaryColumn({ type: 'bigint' })
   id: string;
+
+  @Column({ length: 255 })
+  name: string;
+
+  @Column({ length: 255 })
+  surname: string;
+
+  @Column({ length: 255 })
+  patronymic: string;
+
+  @Column({ length: 255 })
+  birth_date: string;
+
+  @Column({ length: 255 })
+  phone_number: string;
+
+  @Column()
+  expirience: number;
+
+  @Column({ length: 255 })
+  address: string;
+
+  @Column({ length: 255 })
+  skills: string;
+
+  @Column({ length: 255 })
+  salary_rate: string;
+
+  @Column()
+  user_id: string;
 
   @OneToMany(() => Group, (groups) => groups.teachers)
   groups: Group[];

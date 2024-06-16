@@ -14,6 +14,9 @@ export class Expenses {
   @Column({ length: 255 })
   description: string;
 
+  @Column()
+  date: Date;
+
   @ManyToOne(() => Expenses_nsi, (expenses_nsi) => expenses_nsi.expenses)
   expenses_nsi: Expenses_nsi;
 

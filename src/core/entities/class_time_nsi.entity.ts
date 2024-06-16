@@ -1,6 +1,4 @@
 import { Column, Entity, PrimaryColumn, OneToMany } from 'typeorm';
-import { Course } from './course.entity';
-import { Expenses } from './expenses.entity';
 import { Schedule } from './shedule.entity';
 import { WorkingOff } from './working_off.entity';
 
@@ -8,6 +6,12 @@ import { WorkingOff } from './working_off.entity';
 export class ClassTimeNsi {
   @PrimaryColumn({ type: 'bigint' })
   id: string;
+
+  @Column()
+  start_time: Date
+
+  @Column()
+  end_time: Date
 
   // @OneToMany(() => Expenses, (expenses) => expenses.expenses_nsi)
   // expenses: Expenses[];

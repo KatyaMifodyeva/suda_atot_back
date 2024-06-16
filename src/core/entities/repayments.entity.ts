@@ -1,6 +1,4 @@
 import { Column, Entity, PrimaryColumn, ManyToOne } from 'typeorm';
-import { Material } from './material.entity';
-import { Tests } from './tests.entity';
 import { Agreements } from './agreements.entity';
 
 @Entity('repayments')
@@ -18,10 +16,9 @@ export class Repayments {
   repayment_date: string;
 
   @Column()
-  is_full: boolean;
+  is_paid: boolean;
 
   @ManyToOne(() => Agreements, (agreement) => agreement.repayments)
   agreements: Agreements;
-
   //fk заява
 }

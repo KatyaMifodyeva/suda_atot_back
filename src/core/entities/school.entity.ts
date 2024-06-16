@@ -1,9 +1,10 @@
-import { Column, Entity, PrimaryColumn, OneToMany } from 'typeorm';
-import { Material } from './material.entity';
-import { Tests } from './tests.entity';
+import { Column, Entity, PrimaryColumn, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
 import { Student } from './student.entity';
 import { Cabinet } from './cabinet.entity';
 import { Expenses } from './expenses.entity';
+import { User } from './user.entity';
+import { Managers } from './managers.entity';
+import { Coordinator } from './coordinators.entity';
 
 @Entity('school')
 export class School {
@@ -28,8 +29,13 @@ export class School {
   @OneToMany(() => Cabinet, (cabinet) => cabinet.school)
   cabinets: Cabinet[];
 
+  @ManyToOne(() => Managers)
+  @JoinColumn({name: 'manager_id'})
+  manager: Managers;
+
+  @ManyToOne(() => Coordinator)
+  @JoinColumn({name: 'coordinator_id'})
+  coordinator: Coordinator;
   //fk упр
   //fk координатор
-  //cabinets
-  //students
 }

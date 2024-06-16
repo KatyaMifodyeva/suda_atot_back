@@ -1,6 +1,4 @@
-import { ManyToOne, Entity, PrimaryColumn, OneToMany } from 'typeorm';
-import { Material } from './material.entity';
-import { Tests } from './tests.entity';
+import { ManyToOne, Entity, PrimaryColumn, OneToMany, Column } from 'typeorm';
 import { Student } from './student.entity';
 import { School } from './school.entity';
 import { Schedule } from './shedule.entity';
@@ -9,6 +7,12 @@ import { Schedule } from './shedule.entity';
 export class Cabinet {
   @PrimaryColumn({ type: 'bigint' })
   id: string;
+
+  @Column()
+  number: number
+
+  @Column()
+  max_size: string
 
   @ManyToOne(() => School, (school) => school.cabinets)
   school: School;

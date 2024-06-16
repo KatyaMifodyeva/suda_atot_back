@@ -14,24 +14,24 @@ import { types } from 'pg';
       ignoreEnvFile: process.env.NODE_ENV !== 'local',
       envFilePath: `.${process.env.NODE_ENV}.env`,
     }),
-    // TypeOrmModule.forRootAsync({
-    //   // моудль для бд
-    //   imports: [ConfigModule],
-    //   useFactory(configService: ConfigService) {
-    //     const dbConfig = configService.get<DatabaseConfig>('database');
-    //     const options: PostgresConnectionOptions = {
-    //       ...dbConfig,
-    //       synchronize: true,
-    //       migrationsRun: false,
-    //       entities: [join(__dirname, '**/*.entity.{ts,js}')],
-    //     };
-    //     types.setTypeParser(types.builtins.INT8, (value) => {
-    //       return value === null ? null : BigInt(value).toString();
-    //     });
-    //     return options;
-    //   },
-    //   inject: [ConfigService],
-    // }),
+    TypeOrmModule.forRootAsync({
+      // моудль для бд
+      imports: [ConfigModule],
+      useFactory(configService: ConfigService) {
+        const dbConfig = configService.get<DatabaseConfig>('database');
+        const options: PostgresConnectionOptions = {
+          ...dbConfig,
+          synchronize: true,
+          migrationsRun: false,
+          entities: [join(__dirname, '**/*.entity.{ts,js}')],
+        };
+        types.setTypeParser(types.builtins.INT8, (value) => {
+          return value === null ? null : BigInt(value).toString();
+        });
+        return options;
+      },
+      inject: [ConfigService],
+    }),
   ],
 })
 export class AppModule {}

@@ -1,6 +1,4 @@
 import { Column, Entity, PrimaryColumn, OneToMany } from 'typeorm';
-import { Course } from './course.entity';
-import { Expenses } from './expenses.entity';
 import { Schedule } from './shedule.entity';
 import { WorkingOff } from './working_off.entity';
 
@@ -8,6 +6,9 @@ import { WorkingOff } from './working_off.entity';
 export class DaysOfWeekNSI {
   @PrimaryColumn({ type: 'bigint' })
   id: string;
+
+  @Column({ length: 255 })
+  name: string;
 
   // @OneToMany(() => Expenses, (expenses) => expenses.expenses_nsi)
   // expenses: Expenses[];

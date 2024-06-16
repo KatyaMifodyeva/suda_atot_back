@@ -1,6 +1,4 @@
 import { ManyToOne, Entity, PrimaryColumn, OneToMany } from 'typeorm';
-import { Material } from './material.entity';
-import { Tests } from './tests.entity';
 import { Group } from './group.entity';
 import { Cabinet } from './cabinet.entity';
 import { Attendance } from './attendance.entity';
@@ -23,4 +21,7 @@ export class Schedule {
 
   @ManyToOne(() => ClassTimeNsi, (class_time) => class_time.schedule)
   class_time: DaysOfWeekNSI;
+
+  @ManyToOne(() => Group, (group) => group)
+  group: Group;
 }
